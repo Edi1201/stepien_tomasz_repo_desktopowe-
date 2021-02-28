@@ -63,6 +63,11 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="ts_jPanelMain">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -186,7 +191,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="ts_jBclear">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Clear"/>
+            <Property name="text" type="java.lang.String" value="Usu&#x144;"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[70, 70]"/>
             </Property>

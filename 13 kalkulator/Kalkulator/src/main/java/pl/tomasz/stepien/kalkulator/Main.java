@@ -63,7 +63,9 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        ts_jBclear.setText("Clear");
+        ts_jPanelMain.setBackground(new java.awt.Color(204, 204, 204));
+
+        ts_jBclear.setText("Usuń");
         ts_jBclear.setMaximumSize(new java.awt.Dimension(70, 70));
         ts_jBclear.setMinimumSize(new java.awt.Dimension(70, 70));
         ts_jBclear.setPreferredSize(new java.awt.Dimension(70, 70));
