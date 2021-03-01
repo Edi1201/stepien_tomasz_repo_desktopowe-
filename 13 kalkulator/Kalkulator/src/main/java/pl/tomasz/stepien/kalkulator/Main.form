@@ -34,6 +34,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ile dni pomi&#x119;dzy datami"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ts_jMIiledniActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

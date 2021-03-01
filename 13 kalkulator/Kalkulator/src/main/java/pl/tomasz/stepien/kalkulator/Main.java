@@ -8,6 +8,7 @@ package pl.tomasz.stepien.kalkulator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -364,6 +365,11 @@ public class Main extends javax.swing.JFrame {
         ts_jMenuTools.setText("Narzędzia");
 
         ts_jMIiledni.setText("Ile dni pomiędzy datami");
+        ts_jMIiledni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ts_jMIiledniActionPerformed(evt);
+            }
+        });
         ts_jMenuTools.add(ts_jMIiledni);
 
         ts_jMenuBar.add(ts_jMenuTools);
@@ -542,6 +548,11 @@ public class Main extends javax.swing.JFrame {
     private void ts_jMIzamknijActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jMIzamknijActionPerformed
         System.exit(0);
     }//GEN-LAST:event_ts_jMIzamknijActionPerformed
+
+    private void ts_jMIiledniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jMIiledniActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd mm yyyy");
+        JOptionPane.showInputDialog("cos tu mialo byc XD");
+    }//GEN-LAST:event_ts_jMIiledniActionPerformed
 
     /**
      * @param args the command line arguments
