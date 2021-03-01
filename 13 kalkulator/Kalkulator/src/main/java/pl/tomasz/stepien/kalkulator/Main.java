@@ -8,7 +8,9 @@ package pl.tomasz.stepien.kalkulator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -551,7 +553,10 @@ public class Main extends javax.swing.JFrame {
 
     private void ts_jMIiledniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jMIiledniActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd mm yyyy");
-        JOptionPane.showInputDialog("cos tu mialo byc XD");
+        String data = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137"); 
+        LocalDate ldnow = LocalDate.now();
+        LocalDate ldinput = LocalDate.parse(data, formatter);
+        System.out.println(ldnow+" "+ldinput);
     }//GEN-LAST:event_ts_jMIiledniActionPerformed
 
     /**
