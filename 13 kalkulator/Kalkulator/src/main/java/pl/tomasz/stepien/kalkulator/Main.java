@@ -59,6 +59,8 @@ public class Main extends javax.swing.JFrame {
         ts_jMenuPlik = new javax.swing.JMenu();
         ts_jCBMIzapis = new javax.swing.JCheckBoxMenuItem();
         ts_jMIzamknij = new javax.swing.JMenuItem();
+        ts_jMenuTools = new javax.swing.JMenu();
+        ts_jMIiledni = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -359,6 +361,13 @@ public class Main extends javax.swing.JFrame {
 
         ts_jMenuBar.add(ts_jMenuPlik);
 
+        ts_jMenuTools.setText("Narzędzia");
+
+        ts_jMIiledni.setText("Ile dni pomiędzy datami");
+        ts_jMenuTools.add(ts_jMIiledni);
+
+        ts_jMenuBar.add(ts_jMenuTools);
+
         setJMenuBar(ts_jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -604,9 +613,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton ts_jBsqrt;
     private javax.swing.JButton ts_jBtimes;
     private javax.swing.JCheckBoxMenuItem ts_jCBMIzapis;
+    private javax.swing.JMenuItem ts_jMIiledni;
     private javax.swing.JMenuItem ts_jMIzamknij;
     private javax.swing.JMenuBar ts_jMenuBar;
     private javax.swing.JMenu ts_jMenuPlik;
+    private javax.swing.JMenu ts_jMenuTools;
     private javax.swing.JPanel ts_jPanelMain;
     private javax.swing.JTextField ts_jTF;
     // End of variables declaration//GEN-END:variables

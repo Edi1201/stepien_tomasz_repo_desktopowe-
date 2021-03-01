@@ -25,6 +25,18 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="ts_jMenuTools">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Narz&#x119;dzia"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="ts_jMIiledni">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ile dni pomi&#x119;dzy datami"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
