@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -556,7 +557,9 @@ public class Main extends javax.swing.JFrame {
         String data = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137"); 
         LocalDate ldnow = LocalDate.now();
         LocalDate ldinput = LocalDate.parse(data, formatter);
-        System.out.println(ldnow+" "+ldinput);
+        //System.out.println(ldnow+" "+ldinput);
+        long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+        //System.out.println(days);
     }//GEN-LAST:event_ts_jMIiledniActionPerformed
 
     /**
