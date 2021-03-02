@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
 
@@ -554,14 +555,24 @@ public class Main extends javax.swing.JFrame {
 
     private void ts_jMIiledniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jMIiledniActionPerformed
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
-        String date = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137");
-        if(date != null && date.length() == 10){
-            LocalDate ldnow = LocalDate.now();
-            LocalDate ldinput = LocalDate.parse(date, formatter);
-            //System.out.println(ldnow+" "+ldinput);
-            long days = ChronoUnit.DAYS.between(ldinput, ldnow);
-            //System.out.println(days);
-            JOptionPane.showMessageDialog(this, days,"Ilość dni", JOptionPane.PLAIN_MESSAGE);
+        String info = "";
+        String date = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137 "+info);
+        while(info.equals("ok")){
+            if(date != null && date.length() == 10){
+                LocalDate ldnow = LocalDate.now();
+                try{
+                    LocalDate ldinput = LocalDate.parse(date, formatter);
+                     //System.out.println(ldnow+" "+ldinput);
+                    long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+                    //System.out.println(days);
+                    JOptionPane.showMessageDialog(this, days,"Ilość dni", JOptionPane.PLAIN_MESSAGE);
+                    info = "ok";
+                }catch(DateTimeParseException ex){
+                    info = "\nWprowadzono zly format daty";
+                }
+            }else{
+                info = "ok";
+            }
         }
     }//GEN-LAST:event_ts_jMIiledniActionPerformed
 
