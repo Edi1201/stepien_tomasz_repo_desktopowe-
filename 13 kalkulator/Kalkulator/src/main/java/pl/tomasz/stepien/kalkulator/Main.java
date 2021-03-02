@@ -553,13 +553,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ts_jMIzamknijActionPerformed
 
     private void ts_jMIiledniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jMIiledniActionPerformed
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd mm yyyy");
-        String data = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137"); 
-        LocalDate ldnow = LocalDate.now();
-        LocalDate ldinput = LocalDate.parse(data, formatter);
-        //System.out.println(ldnow+" "+ldinput);
-        long days = ChronoUnit.DAYS.between(ldinput, ldnow);
-        //System.out.println(days);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
+        String date = JOptionPane.showInputDialog("Wprowadz date dd mm yyyy np 01 02 2137");
+        if(date != null && date.length() == 10){
+            LocalDate ldnow = LocalDate.now();
+            LocalDate ldinput = LocalDate.parse(date, formatter);
+            //System.out.println(ldnow+" "+ldinput);
+            long days = ChronoUnit.DAYS.between(ldinput, ldnow);
+            //System.out.println(days);
+            JOptionPane.showMessageDialog(this, days,"Ilość dni", JOptionPane.PLAIN_MESSAGE);
+        }
     }//GEN-LAST:event_ts_jMIiledniActionPerformed
 
     /**
