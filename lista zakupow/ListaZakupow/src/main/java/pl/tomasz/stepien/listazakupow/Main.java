@@ -20,6 +20,8 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         addKeyListenerToTFcoKupiles();
+        addKeyListenerTojTFwartosc();
+        addKeyListenerTojTFdata();
     }
 
     /**
@@ -40,7 +42,7 @@ public class Main extends javax.swing.JFrame {
         jTFcoKupiles = new javax.swing.JTextField();
         jTFwartosc = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
+        jTFdata = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTFdzisiejszeZakupy = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -103,7 +105,7 @@ public class Main extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3)))
+                            .addComponent(jTFdata)))
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +131,7 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jTFcoKupiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFwartosc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFdata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,8 +249,36 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void keyTyped(KeyEvent e) {
                 char ch = e.getKeyChar();
-                if(ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9'){
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
                     System.out.println("NACIŚNIĘTO CYFRE"+ch);
+                    jTFwartosc.setEditable(true);
+                }else{
+                    jTFwartosc.setEditable(false);
+                }
+                
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                
+            }
+        });
+    }
+    private void addKeyListenerTojTFdata(){
+        jTFwartosc.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
+                    System.out.println("NACIŚNIĘTO CYFRE"+ch);
+                    jTFdata.setEditable(true);
+                }else{
+                    jTFdata.setEditable(false);
                 }
                 
             }
@@ -281,10 +311,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTFcoKupiles;
+    private javax.swing.JTextField jTFdata;
     private javax.swing.JTextField jTFdzisiejszeZakupy;
     private javax.swing.JTextField jTFwartosc;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
