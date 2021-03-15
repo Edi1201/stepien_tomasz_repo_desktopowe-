@@ -65,6 +65,12 @@ public class Main extends javax.swing.JFrame {
 
         jLabel4.setText("Data zakupu");
 
+        jTFcoKupiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFcoKupilesActionPerformed(evt);
+            }
+        });
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Dzisiejsze zakupy");
@@ -187,6 +193,10 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTFcoKupilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFcoKupilesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFcoKupilesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -224,22 +234,25 @@ public class Main extends javax.swing.JFrame {
     
     private void addKeyListenerToTFcoKupiles(){
         jTFcoKupiles.addKeyListener(new KeyListener() {
-            @Override
             public void keyTyped(KeyEvent e) {
-                if(e.getKeyChar() == KeyEvent.VK_ENTER){
-                    System.out.println("Wprowadzono dane:");
-                    jTFdzisiejszeZakupy.setText(jTFcoKupiles.getText());
+                char ch = e.getKeyChar();
+                if((ch >= 'A' && ch <= 'z') || ch == KeyEvent.VK_BACK_SPACE || ch == KeyEvent.VK_SPACE){
+                    jTFcoKupiles.setEditable(true);
+                    System.out.println("Nacisnieto: "+ch);
+                }else{
+                    jTFcoKupiles.setEditable(false);
+           
                 }
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                
+
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                
+
             }
         });
     }
@@ -273,12 +286,16 @@ public class Main extends javax.swing.JFrame {
         jTFwartosc.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+                String temp = jTFwartosc.getText();
                 char ch = e.getKeyChar();
-                if(ch >= '0' && ch <= '9' || ch == KeyEvent.VK_BACK_SPACE){
-                    System.out.println("NACIŚNIĘTO CYFRE"+ch);
-                    jTFdata.setEditable(true);
+                if((ch >= '0' && ch <= '9' || ch==KeyEvent.VK_BACK_SPACE) &&
+                        (temp.length() < 10 || ch==KeyEvent.VK_BACK_SPACE)){
+                    jTFwartosc.setEditable(true);
+                    if((temp.length() == 4 || temp.length() == 7) && ch != KeyEvent.VK_BACK_SPACE){
+                        jTFwartosc.setText(temp+"-");
+                    }
                 }else{
-                    jTFdata.setEditable(false);
+                    jTFwartosc.setEditable(false);
                 }
                 
             }
