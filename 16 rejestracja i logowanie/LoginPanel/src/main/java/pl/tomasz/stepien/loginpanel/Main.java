@@ -7,6 +7,7 @@ package pl.tomasz.stepien.loginpanel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
-        addKeyListenerToUsername();
+        
     }
 
     /**
@@ -119,6 +120,11 @@ public class Main extends javax.swing.JFrame {
 
         ts_jBregister.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         ts_jBregister.setText("Register");
+        ts_jBregister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ts_jBregisterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ts_jPanelRegisterLayout = new javax.swing.GroupLayout(ts_jPanelRegister);
         ts_jPanelRegister.setLayout(ts_jPanelRegisterLayout);
@@ -180,6 +186,10 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ts_jBregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jBregisterActionPerformed
+        registerCheck();
+    }//GEN-LAST:event_ts_jBregisterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,28 +224,18 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-    private void addKeyListenerToUsername(){
-        ts_jTFusername.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char ch = e.getKeyChar();
-                if(ch >= 'A' && ch <= 'z' || ch == KeyEvent.VK_BACK_SPACE){
-                    ts_jTFusername.setEditable(true);
-                    //jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
-                } else {
-                    ts_jTFusername.setEditable(false);
-                }
-                
+    private void registerCheck(){
+        String username = ts_jTFusername.getText();
+        if(!(username.length() > 1 && username.length() < 21)){
+            JOptionPane.showMessageDialog(null, "Nazwa użytkownika powinna mieć minimum 2 litery a maksymalnie 20!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        }else {
+            for(int i=0; i<username.length(); i++){
+                char ch = username.charAt(i);
+                if(!(ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')){
+                    JOptionPane.showMessageDialog(null, "Nazwa użytkownika może zawierać tylko duże i małe litery!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                } 
             }
-            @Override
-            public void keyPressed(KeyEvent e) {
-                //System.out.println("2 keyPressed "+e.getKeyChar());
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {
-                //System.out.println("3 keyReleased "+e.getKeyChar());
-            }
-        });
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
