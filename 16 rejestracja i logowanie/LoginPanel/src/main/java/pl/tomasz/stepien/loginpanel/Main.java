@@ -5,6 +5,9 @@
  */
 package pl.tomasz.stepien.loginpanel;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 /**
  *
  * @author tomme
@@ -16,6 +19,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        addKeyListenerToUsername();
     }
 
     /**
@@ -207,6 +211,29 @@ public class Main extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
+            }
+        });
+    }
+    private void addKeyListenerToUsername(){
+        ts_jTFusername.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char ch = e.getKeyChar();
+                if(ch >= 'A' && ch <= 'z' || ch == KeyEvent.VK_BACK_SPACE){
+                    ts_jTFusername.setEditable(true);
+                    //jTADzisiejszeZakupy.setText(jTFCoKupiles.getText());
+                } else {
+                    ts_jTFusername.setEditable(false);
+                }
+                
+            }
+            @Override
+            public void keyPressed(KeyEvent e) {
+                //System.out.println("2 keyPressed "+e.getKeyChar());
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+                //System.out.println("3 keyReleased "+e.getKeyChar());
             }
         });
     }
