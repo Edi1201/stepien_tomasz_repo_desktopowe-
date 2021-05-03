@@ -38,8 +38,8 @@ public class Main extends javax.swing.JFrame {
         ts_jLabelEmail = new javax.swing.JLabel();
         ts_jTFemail = new javax.swing.JTextField();
         ts_jLabelPassword = new javax.swing.JLabel();
-        ts_jTFpassword = new javax.swing.JTextField();
         ts_jBlogin = new javax.swing.JButton();
+        ts_jTFpassword = new javax.swing.JPasswordField();
         ts_jPanelRegister = new javax.swing.JPanel();
         ts_jLabelRegisterText = new javax.swing.JLabel();
         ts_jLabelUsername = new javax.swing.JLabel();
@@ -47,12 +47,13 @@ public class Main extends javax.swing.JFrame {
         ts_jLabelEmail2 = new javax.swing.JLabel();
         ts_jTFemail2 = new javax.swing.JTextField();
         ts_jLabelPassword2 = new javax.swing.JLabel();
-        ts_jTFpassword2 = new javax.swing.JTextField();
         ts_jLabelPasswordConfirm = new javax.swing.JLabel();
-        ts_jTFpasswordConfirm = new javax.swing.JTextField();
         ts_jBregister = new javax.swing.JButton();
+        ts_jTFpassword2 = new javax.swing.JPasswordField();
+        ts_jTFpasswordConfirm = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Panel rejestracji");
 
         ts_jLabelLoginText.setFont(new java.awt.Font("Gadugi", 0, 36)); // NOI18N
         ts_jLabelLoginText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,6 +67,11 @@ public class Main extends javax.swing.JFrame {
 
         ts_jBlogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         ts_jBlogin.setText("Login in");
+        ts_jBlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ts_jBloginActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ts_jPanelLoginLayout = new javax.swing.GroupLayout(ts_jPanelLogin);
         ts_jPanelLogin.setLayout(ts_jPanelLoginLayout);
@@ -77,9 +83,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(ts_jTFemail, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ts_jLabelEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ts_jLabelLoginText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ts_jTFpassword, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ts_jLabelPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                    .addComponent(ts_jBlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ts_jBlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ts_jTFpassword))
                 .addContainerGap())
         );
         ts_jPanelLoginLayout.setVerticalGroup(
@@ -139,10 +145,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(ts_jLabelEmail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ts_jTFemail2)
                     .addComponent(ts_jLabelPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ts_jTFpassword2)
                     .addComponent(ts_jLabelPasswordConfirm, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                    .addComponent(ts_jTFpasswordConfirm)
-                    .addComponent(ts_jBregister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ts_jBregister, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ts_jTFpassword2)
+                    .addComponent(ts_jTFpasswordConfirm))
                 .addContainerGap())
         );
         ts_jPanelRegisterLayout.setVerticalGroup(
@@ -190,6 +196,10 @@ public class Main extends javax.swing.JFrame {
         registerCheck();
     }//GEN-LAST:event_ts_jBregisterActionPerformed
 
+    private void ts_jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ts_jBloginActionPerformed
+        loginCheck();
+    }//GEN-LAST:event_ts_jBloginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,15 +238,88 @@ public class Main extends javax.swing.JFrame {
         String username = ts_jTFusername.getText();
         if(!(username.length() > 1 && username.length() < 21)){
             JOptionPane.showMessageDialog(null, "Nazwa użytkownika powinna mieć minimum 2 litery a maksymalnie 20!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+            return;
         }else {
             for(int i=0; i<username.length(); i++){
                 char ch = username.charAt(i);
-                if(!(ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')){
+                if(!(ch >= 'A' && ch <= 'z')){
                     JOptionPane.showMessageDialog(null, "Nazwa użytkownika może zawierać tylko duże i małe litery!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                    return;
                 } 
             }
         }
+        String email = ts_jTFemail2.getText();
+        if(email.contains("@") && email.contains(".")){
+            if(email.charAt(0)=='@'){
+                JOptionPane.showMessageDialog(null, "Podano nie poprawny adres EMAIL!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }else{
+                String host[] = email.split("@");
+                if(host[1].charAt(0)=='.'){
+                    JOptionPane.showMessageDialog(null, "Podano nie poprawny adres EMAIL!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                String dot = host[1];
+                String dot2[] = dot.split("\\.");
+                if(dot2[1].isEmpty()==true){
+                    JOptionPane.showMessageDialog(null, "Podano nie poprawny adres EMAIL!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Podano nie poprawny adres EMAIL!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String password = String.valueOf(ts_jTFpassword2.getPassword());
+        if(password.length() < 4){
+            JOptionPane.showMessageDialog(null, "Hasło mieć minimum 4 znaki długości!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+        }else{
+            for(int i=0;i<password.length();i++){
+                char ch = password.charAt(i);
+                if(!((ch >= '0'  && ch <= '9') || (ch >= 'A' && ch <= 'z'))){
+                    JOptionPane.showMessageDialog(null, "Hasło może tylko zawierać litery i cyfry!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        }
+        String confPassword = String.valueOf(ts_jTFpasswordConfirm.getPassword());
+        if(!(confPassword.equals(password))){
+            JOptionPane.showMessageDialog(null, "Podane hasła nie są takie same!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        FileUtils stf = new FileUtils();
+        String usersString = stf.readFromFile();
+        String[] lines = usersString.split("\\r?\\n");
+        for (String user : lines) {
+            String userSplitted[] = user.split(":");
+            if(username.equals(userSplitted[0])){
+                JOptionPane.showMessageDialog(null, "Podany username istnieje już w bazie danych!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                return;
+            } 
+            if(email.equals(userSplitted[1])){
+                JOptionPane.showMessageDialog(null, "Podany email istnieje już w bazie danych!", "BŁĄD!", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            String text = username+":"+email+":"+password;
+            stf.saveToFile(text);
+            return;
+        }
     }
+    private void loginCheck(){
+        String email = ts_jTFemail.getText();
+        String password = String.valueOf(ts_jTFpassword.getPassword());
+        FileUtils stf = new FileUtils();
+        String usersString = stf.readFromFile();
+        String[] lines = usersString.split("\\r?\\n");
+        for (String user : lines) {
+            String userSplitted[] = user.split(":");
+            if(email.equals(userSplitted[1]) && password.equals(userSplitted[2])){
+                JOptionPane.showMessageDialog(null, "Witam "+userSplitted[0]);
+                return;
+            }
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ts_jBlogin;
@@ -253,9 +336,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel ts_jPanelRegister;
     private javax.swing.JTextField ts_jTFemail;
     private javax.swing.JTextField ts_jTFemail2;
-    private javax.swing.JTextField ts_jTFpassword;
-    private javax.swing.JTextField ts_jTFpassword2;
-    private javax.swing.JTextField ts_jTFpasswordConfirm;
+    private javax.swing.JPasswordField ts_jTFpassword;
+    private javax.swing.JPasswordField ts_jTFpassword2;
+    private javax.swing.JPasswordField ts_jTFpasswordConfirm;
     private javax.swing.JTextField ts_jTFusername;
     private javax.swing.JTabbedPane ts_jTP;
     // End of variables declaration//GEN-END:variables
