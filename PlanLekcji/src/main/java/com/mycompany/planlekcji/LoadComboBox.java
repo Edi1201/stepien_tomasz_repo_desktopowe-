@@ -12,6 +12,11 @@ import javax.swing.JComboBox;
  * @author tomaszstepien
  */
 public class LoadComboBox {
+    /**
+     * ładuje comobBoxy z pliku
+     * @param name - nazwa domyślna w comboBoxie
+     * @param comboBox - comobBox ktory ma byc ustaiony
+     */
     public void load(String name, JComboBox comboBox) {
         
     File folder = new File("data/"+name+"/");

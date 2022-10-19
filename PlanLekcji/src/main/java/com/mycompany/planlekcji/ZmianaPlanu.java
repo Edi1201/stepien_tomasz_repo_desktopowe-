@@ -13,17 +13,23 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ *  
  * @author tomaszstepien
  */
 public class ZmianaPlanu {
+    /**
+     * Zmienia plan lekcji
+     * @param table - tabela która, ma być wypełniona
+     * @param planType - typ planu
+     * @param planTypeValue - wartośc typu planu
+     */
     public void changePlan(JTable table, String planType, String planTypeValue) {
         // planType = ""
         File f = new File("data/"+planType+"/"+planTypeValue+".csv");
         String data = "";
       
         // clears table before inserting values in case there would be some in blank spots
-        clearTableValues(table); 
+        clearTableValues(table);
         
         try {
             Scanner sc = new Scanner(f);
@@ -57,6 +63,10 @@ public class ZmianaPlanu {
         }
     }
     
+    /**
+     * Czysci tabele
+     * @param table - tabela ktora ma byc wyczyszczona 
+     */
     private void clearTableValues(JTable table) {
         for(int i = 1; i < 9; i++) {
             for(int j = 2; j < 7; j++) {
