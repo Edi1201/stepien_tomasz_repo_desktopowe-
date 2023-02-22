@@ -20,6 +20,7 @@ public class JFrame extends javax.swing.JFrame {
      */
     public JFrame() {
         initComponents();
+        
     }
 
     /**
@@ -62,11 +63,16 @@ public class JFrame extends javax.swing.JFrame {
 
         jLgetBuy.setText("Tyle dostaniesz:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "EUR", "GBP", "CHF", "JPY" }));
 
         jLwhatBuy.setText("Wybierz co chcesz kupić:");
 
         jBcheckBuy.setText("jButton1");
+        jBcheckBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcheckBuyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPbuyLayout = new javax.swing.GroupLayout(jPbuy);
         jPbuy.setLayout(jPbuyLayout);
@@ -117,9 +123,14 @@ public class JFrame extends javax.swing.JFrame {
 
         jLamountSell.setText("Podaj ilość jaką chcesz kupić:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "EUR", "GBP", "CHF", "JPY" }));
 
         jBcheckSell.setText("jButton2");
+        jBcheckSell.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcheckSellActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPsellLayout = new javax.swing.GroupLayout(jPsell);
         jPsell.setLayout(jPsellLayout);
@@ -174,6 +185,23 @@ public class JFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBcheckBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcheckBuyActionPerformed
+        double amount = Double.parseDouble(jTFamountBuy.getText());
+        String currency = jComboBox1.getSelectedItem().toString();
+        GetPriceFromAPI api = new GetPriceFromAPI();
+        double price = api.getPrice("buy", currency);
+        System.out.println(amount/price);
+    }//GEN-LAST:event_jBcheckBuyActionPerformed
+
+    private void jBcheckSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcheckSellActionPerformed
+        double amount = Double.parseDouble(jTFamountSell.getText());
+        String currency = jComboBox2.getSelectedItem().toString();
+        GetPriceFromAPI api = new GetPriceFromAPI();
+        double price = api.getPrice("sell", currency);
+        
+        System.out.println(amount*price);
+    }//GEN-LAST:event_jBcheckSellActionPerformed
 
     /**
      * @param args the command line arguments
