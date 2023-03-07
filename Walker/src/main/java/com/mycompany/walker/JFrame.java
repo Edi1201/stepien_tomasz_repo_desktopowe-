@@ -4,6 +4,8 @@
  */
 package com.mycompany.walker;
 
+import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,6 +13,15 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,8 +34,11 @@ public class JFrame extends javax.swing.JFrame {
      */
     public JFrame() {
         initComponents();
-        nigger();
+        //nigger();
+        setComboBoxValues();
         
+        
+
     }
 
     /**
@@ -36,31 +50,121 @@ public class JFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jPmain = new javax.swing.JPanel();
+        jCBmain = new javax.swing.JComboBox<>();
+        jLdesc = new javax.swing.JLabel();
+        jLname = new javax.swing.JLabel();
+        jLdate = new javax.swing.JLabel();
+        jLlenght = new javax.swing.JLabel();
+        jLtype = new javax.swing.JLabel();
+        jLtime = new javax.swing.JLabel();
+        jLimage = new javax.swing.JLabel();
+        jTFfolder = new javax.swing.JTextField();
+        jTFfile = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMBmain = new javax.swing.JMenuBar();
         jMmain = new javax.swing.JMenu();
         jMIsave = new javax.swing.JMenuItem();
         jMIclose = new javax.swing.JMenuItem();
         jMIabout = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 705, Short.MAX_VALUE)
+        jCBmain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBmainActionPerformed(evt);
+            }
+        });
+
+        jLdesc.setText("jLabel1");
+
+        jLname.setText("jLabel1");
+
+        jLdate.setText("jLabel1");
+
+        jLlenght.setText("jLabel1");
+
+        jLtype.setText("jLabel1");
+
+        jLtime.setText("jLabel1");
+
+        jLimage.setText("jLabel1");
+
+        jTFfolder.setToolTipText("Folder");
+        jTFfolder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFfolderActionPerformed(evt);
+            }
+        });
+
+        jTFfile.setToolTipText("Plik");
+
+        jLabel1.setText("Folder");
+
+        jLabel2.setText("Plik");
+
+        javax.swing.GroupLayout jPmainLayout = new javax.swing.GroupLayout(jPmain);
+        jPmain.setLayout(jPmainLayout);
+        jPmainLayout.setHorizontalGroup(
+            jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPmainLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLname, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                    .addComponent(jLdesc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLlenght, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLtime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLtype, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jCBmain, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPmainLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPmainLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(jTFfolder))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFfile)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))))
+                .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
+        jPmainLayout.setVerticalGroup(
+            jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPmainLayout.createSequentialGroup()
+                .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPmainLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jCBmain, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPmainLayout.createSequentialGroup()
+                        .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFfile, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTFfolder, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPmainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPmainLayout.createSequentialGroup()
+                        .addComponent(jLname, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLdesc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLlenght, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLdate, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLtime, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLtype, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 15, Short.MAX_VALUE))
+                    .addComponent(jLimage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jMmain.setText("Menu");
@@ -74,38 +178,22 @@ public class JFrame extends javax.swing.JFrame {
         jMmain.add(jMIsave);
 
         jMIclose.setText("ZAMKNIJ APLIKACJE");
+        jMIclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIcloseActionPerformed(evt);
+            }
+        });
         jMmain.add(jMIclose);
 
         jMIabout.setText("O AUTORZE");
+        jMIabout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIaboutActionPerformed(evt);
+            }
+        });
         jMmain.add(jMIabout);
 
         jMBmain.add(jMmain);
-
-        jMenu1.setText("Lista tras");
-
-        jMenuItem1.setText("1");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("2");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("jMenuItem4");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem5.setText("jMenuItem5");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem6.setText("jMenuItem6");
-        jMenu1.add(jMenuItem6);
-
-        jMBmain.add(jMenu1);
 
         setJMenuBar(jMBmain);
 
@@ -113,23 +201,46 @@ public class JFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPmain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPmain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMIsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIsaveActionPerformed
-        // TODO add your handling code here:
+        String folder = jTFfolder.getText();
+        String file = jTFfile.getText();
+        String comboBoxValue = jCBmain.getSelectedItem().toString();
+        if(folder.equals("") || file.equals("")){
+          JOptionPane.showMessageDialog(null, "Nie podano folderu albo pliku!", "Error", JOptionPane.INFORMATION_MESSAGE);  
+        }else{
+            SaveToFile s = new SaveToFile();
+            s.save(folder, file, comboBoxValue+"\n");
+        }
     }//GEN-LAST:event_jMIsaveActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jCBmainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBmainActionPerformed
+        selectRoute();
+        
+    }//GEN-LAST:event_jCBmainActionPerformed
+
+    private void jMIcloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIcloseActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMIcloseActionPerformed
+
+    private void jMIaboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIaboutActionPerformed
+        JOptionPane.showMessageDialog(null, "Wykonane przez: Tomasz Stępień, Franciszek Mierzwiak", "About", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMIaboutActionPerformed
+
+    private void jTFfolderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFfolderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jTFfolderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,41 +276,76 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
     }
-    public void nigger(){
-        //String url = "https://my-json-server.typicode.com/Farmien/dasa_banych";
-        
-        String url = "https://my-json-server.typicode.com/Farmien/dasa_banych/db";
-        InputStream is = null;
-        try{
-            is = new URL(url).openStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-            StringBuilder sb = new StringBuilder();
-            int cp;
-            while ((cp = rd.read()) != -1){
-                sb.append((char) cp);
-            }
-            String jsonText = sb.toString();
-            System.out.println(jsonText);
-            is.close();
-        }catch(MalformedURLException e){
-            e.printStackTrace();
-        }catch(IOException e){
-            e.printStackTrace();
+    private void setComboBoxValues() {
+        SplitDataImp sd = new SplitData();
+        ArrayList<String> routes = sd.getData();
+        ArrayList<String> names = sd.getNames(routes);
+        for (String x : names) {
+
+            jCBmain.addItem(x);
         }
     }
+    private void selectRoute() {
+        SplitDataImp sd = new SplitData();
+        ArrayList<String> routes = sd.getData();
+        ArrayList<String> names = sd.getNames(routes);
+        ArrayList<String> descriptions = sd.getDescription(routes);
+        ArrayList<String> images = sd.getImages(routes);
+        ArrayList<String> lenghts = sd.getLengths(routes);
+        ArrayList<String> bestDates = sd.getBestDates(routes);
+        ArrayList<String> bestTimes = sd.getBestTimes(routes);
+        ArrayList<String> types = sd.getTypes(routes);
+        for(int i=0;i<routes.size();i++){
+            Route r = new Route(names.get(i), descriptions.get(i),images.get(i),lenghts.get(i), bestDates.get(i), bestTimes.get(i), types.get(i));
+            routesObj.add(r);
+        }
+        
+        //int id = 0;
+        String comboBoxValue = jCBmain.getSelectedItem().toString();
+        int id = jCBmain.getSelectedIndex();
+        
+        jLname.setText("Nazwa:"+routesObj.get(id).getName());
+        jLdesc.setText("Opis: "+routesObj.get(id).getDescription());
+        jLlenght.setText("Dlugosc: "+routesObj.get(id).getLenght());
+        jLdate.setText("Data najlepszego czasu: "+routesObj.get(id).getBestDate());
+        jLtime.setText("Najlepszy czas: "+routesObj.get(id).getBestTime());
+        jLtype.setText("Typ: "+routesObj.get(id).getType());
+        
+        
+        URL url;
+        try {
+            url = new URL(routesObj.get(id).getImage());
+            Image image = ImageIO.read(url);
+            Image image2 = image.getScaledInstance(355, 280, Image.SCALE_DEFAULT);
+            
+            jLimage.setIcon(new ImageIcon(image2));
+        } catch (IOException ex) {
+            System.out.println("NIE DZIAŁA");
+        }
+        
+        
+    }
+    
+    ArrayList<Route> routesObj = new ArrayList<>();
+      
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jCBmain;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLdate;
+    private javax.swing.JLabel jLdesc;
+    private javax.swing.JLabel jLimage;
+    private javax.swing.JLabel jLlenght;
+    private javax.swing.JLabel jLname;
+    private javax.swing.JLabel jLtime;
+    private javax.swing.JLabel jLtype;
     private javax.swing.JMenuBar jMBmain;
     private javax.swing.JMenuItem jMIabout;
     private javax.swing.JMenuItem jMIclose;
     private javax.swing.JMenuItem jMIsave;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMmain;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPmain;
+    private javax.swing.JTextField jTFfile;
+    private javax.swing.JTextField jTFfolder;
     // End of variables declaration//GEN-END:variables
 }
