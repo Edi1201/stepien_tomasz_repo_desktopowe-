@@ -4,6 +4,8 @@
  */
 package com.mycompany.kantor;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -33,6 +35,7 @@ public class JFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
         jTBmain = new javax.swing.JTabbedPane();
         jPbuy = new javax.swing.JPanel();
         jLmainBuy = new javax.swing.JLabel();
@@ -50,8 +53,18 @@ public class JFrame extends javax.swing.JFrame {
         jLamountSell = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jBcheckSell = new javax.swing.JButton();
+        jPcheck = new javax.swing.JPanel();
+        jLmainCheck = new javax.swing.JLabel();
+        jLwhatCheck = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLactionCheck = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox<>();
+        jBcheckCheck = new javax.swing.JButton();
+        jLcheckPrices = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +80,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jLwhatBuy.setText("Wybierz co chcesz kupić:");
 
-        jBcheckBuy.setText("jButton1");
+        jBcheckBuy.setText("SPRAWDŹ");
         jBcheckBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBcheckBuyActionPerformed(evt);
@@ -119,13 +132,13 @@ public class JFrame extends javax.swing.JFrame {
         jLmain.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLmain.setText("KALKULATOR WALUT");
 
-        jLwhatSell.setText("Wybierz co chcesz kupić:");
+        jLwhatSell.setText("Wybierz co chcesz sprzedać:");
 
-        jLamountSell.setText("Podaj ilość jaką chcesz kupić:");
+        jLamountSell.setText("Podaj ilość jaką chcesz sprzedać:");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "EUR", "GBP", "CHF", "JPY" }));
 
-        jBcheckSell.setText("jButton2");
+        jBcheckSell.setText("SPRAWDŹ");
         jBcheckSell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBcheckSellActionPerformed(evt);
@@ -172,6 +185,68 @@ public class JFrame extends javax.swing.JFrame {
 
         jTBmain.addTab("SPRZEDAŻ", jPsell);
 
+        jLmainCheck.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jLmainCheck.setText("SPRAWDŹ NAJWIĘKSZA I NAJMNIEJSZĄ CENE Z HISTORI WALUCIARZA:");
+
+        jLwhatCheck.setText("Wybierz walute jaką chcesz sprawdzić:");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "EUR", "GBP", "CHF", "JPY" }));
+
+        jLactionCheck.setText("Wybierz co chcesz sprawdzić:");
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BUY", "SELL" }));
+
+        jBcheckCheck.setText("SPRAWDŹ");
+        jBcheckCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBcheckCheckActionPerformed(evt);
+            }
+        });
+
+        jLcheckPrices.setText("Najmniejsza/Największa:");
+
+        javax.swing.GroupLayout jPcheckLayout = new javax.swing.GroupLayout(jPcheck);
+        jPcheck.setLayout(jPcheckLayout);
+        jPcheckLayout.setHorizontalGroup(
+            jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPcheckLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLcheckPrices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBcheckCheck, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLmainCheck, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                    .addGroup(jPcheckLayout.createSequentialGroup()
+                        .addGroup(jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLactionCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLwhatCheck, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPcheckLayout.setVerticalGroup(
+            jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPcheckLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLmainCheck)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLwhatCheck)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPcheckLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLactionCheck)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLcheckPrices)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(jBcheckCheck)
+                .addContainerGap())
+        );
+
+        jTBmain.addTab("SPRAWDŹ DANE", jPcheck);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,21 +262,46 @@ public class JFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBcheckBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcheckBuyActionPerformed
-        double amount = Double.parseDouble(jTFamountBuy.getText());
-        String currency = jComboBox1.getSelectedItem().toString();
-        GetPriceFromAPI api = new GetPriceFromAPI();
-        double price = api.getPrice("buy", currency);
-        System.out.println(amount/price);
+        try{
+            BigDecimal amount = new BigDecimal(jTFamountBuy.getText());
+            GetPriceFromAPI api = new GetPriceFromAPI();
+            SaveDataToFile saver = new SaveDataToFile();
+            String currency = jComboBox1.getSelectedItem().toString();
+            BigDecimal price = api.getPrice("buy", currency);
+            System.out.print(price);
+            BigDecimal res = amount.divide(price, 2, RoundingMode.HALF_UP);
+            jLgetBuy.setText("Tyle dostaniesz: "+res);
+            saver.saveData("buy", currency, amount, res, price);
+        }catch(Exception e){
+            System.out.println("blad");
+        }
+        
+        
     }//GEN-LAST:event_jBcheckBuyActionPerformed
 
     private void jBcheckSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcheckSellActionPerformed
-        double amount = Double.parseDouble(jTFamountSell.getText());
-        String currency = jComboBox2.getSelectedItem().toString();
-        GetPriceFromAPI api = new GetPriceFromAPI();
-        double price = api.getPrice("sell", currency);
+        try{
+            BigDecimal amount = new BigDecimal(jTFamountSell.getText());
+            //double amount = Double.parseDouble(jTFamountSell.getText());
+            GetPriceFromAPI api = new GetPriceFromAPI();
+            SaveDataToFile saver = new SaveDataToFile();
+            String currency = jComboBox2.getSelectedItem().toString();
+            BigDecimal price = api.getPrice("sell", currency);
+            BigDecimal res = amount.multiply(price).setScale(2, RoundingMode.UP);
+            jLgetSell.setText("Tyle dostaniesz: "+res);
+            saver.saveData("sell", currency, amount, res, price); 
+        }catch(Exception e){
+            System.out.println("blad");
+        }
         
-        System.out.println(amount*price);
     }//GEN-LAST:event_jBcheckSellActionPerformed
+
+    private void jBcheckCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBcheckCheckActionPerformed
+        ReadDataFromFile reader = new ReadDataFromFile();
+        String currency = jComboBox3.getSelectedItem().toString();
+        String action = jComboBox4.getSelectedItem().toString();
+        jLcheckPrices.setText("Najmniejsza/Największa:"+reader.readData(action.toLowerCase(), currency));
+    }//GEN-LAST:event_jBcheckCheckActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,21 +337,31 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBcheckBuy;
+    private javax.swing.JButton jBcheckCheck;
     private javax.swing.JButton jBcheckSell;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLactionCheck;
     private javax.swing.JLabel jLamountBuy;
     private javax.swing.JLabel jLamountSell;
+    private javax.swing.JLabel jLcheckPrices;
     private javax.swing.JLabel jLgetBuy;
     private javax.swing.JLabel jLgetSell;
     private javax.swing.JLabel jLmain;
     private javax.swing.JLabel jLmainBuy;
+    private javax.swing.JLabel jLmainCheck;
     private javax.swing.JLabel jLwhatBuy;
+    private javax.swing.JLabel jLwhatCheck;
     private javax.swing.JLabel jLwhatSell;
     private javax.swing.JPanel jPbuy;
+    private javax.swing.JPanel jPcheck;
     private javax.swing.JPanel jPsell;
     private javax.swing.JTabbedPane jTBmain;
     private javax.swing.JTextField jTFamountBuy;
